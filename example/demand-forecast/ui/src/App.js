@@ -16,6 +16,7 @@ class App extends Component {
       isLoading: false,
       formData: {
         dataCenter: 'Holdem',
+        availability: 0.95,
         sepalLength: 4,
         sepalWidth: 2,
         petalLength: 1,
@@ -66,24 +67,13 @@ class App extends Component {
     const result = this.state.result;
 
     var datacenters = []
-    datacenters.push(<option key = 'Holdem' value = 'Holdem'>'Holdem'</option>)
-    datacenters.push(<option key = 'War' value = 'War'>'War'</option>)
-    var sepalLengths = []
-    for (var i = 4; i <= 7; i = +(i + 0.1).toFixed(1)) {
-      sepalLengths.push(<option key = {i} value = {i}>{i}</option>);
+    datacenters.push(<option key = 'Holdem' value = 'Holdem'>Holdem</option>)
+    datacenters.push(<option key = 'War' value = 'War'>War</option>)
+
+    var availabilities =[]
+    for (var i = 0.05; i <= 1; i = +(i + 0.05).toFixed(2)) {
+      availabilities.push(<option key = {i} value = {i}>{i}</option>);
     }
-    var sepalWidths = []
-    for (var i = 2; i <= 4; i = +(i + 0.1).toFixed(1)) {
-      sepalWidths.push(<option key = {i} value = {i}>{i}</option>);
-    }
-    // var petalLengths = []
-    // for (var i = 1; i <= 6; i = +(i + 0.1).toFixed(1)){
-    //   petalLengths.push(<option key = {i} value = {i}>{i}</option>);
-    // }
-    // var petalWidths = []
-    // for (var i = 0.1; i <= 3; i = +(i + 0.1).toFixed(1)) {
-    //   petalWidths.push(<option key = {i} value = {i}>{i}</option>);
-    // }
     return (
       <Container>
         <div>
@@ -96,45 +86,23 @@ class App extends Component {
                 <Form.Label>Data Center</Form.Label>
                 <Form.Control
                   as="select"
-                  value={formData.sepalLength}
+                  value={formData.dataCenter}
                   name="dataCenter"
                   onChange={this.handleChange}>
                   {datacenters}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label>Sepal Width</Form.Label>
+                <Form.Label>Availability</Form.Label>
                 <Form.Control
                   as="select"
-                  value={formData.sepalWidth}
-                  name="sepalWidth"
+                  value={formData.availability}
+                  name="Availability"
                   onChange={this.handleChange}>
-                  {sepalWidths}
+                  {availabilities}
                 </Form.Control>
               </Form.Group>
             </Form.Row>
-            {/*<Form.Row>*/}
-            {/*  <Form.Group as={Col}>*/}
-            {/*    <Form.Label>Petal Length</Form.Label>*/}
-            {/*    <Form.Control*/}
-            {/*      as="select"*/}
-            {/*      value={formData.petalLength}*/}
-            {/*      name="petalLength"*/}
-            {/*      onChange={this.handleChange}>*/}
-            {/*      {petalLengths}*/}
-            {/*    </Form.Control>*/}
-            {/*  </Form.Group>*/}
-            {/*  <Form.Group as={Col}>*/}
-            {/*    <Form.Label>Petal Width</Form.Label>*/}
-            {/*    <Form.Control*/}
-            {/*      as="select"*/}
-            {/*      value={formData.petalWidth}*/}
-            {/*      name="petalWidth"*/}
-            {/*      onChange={this.handleChange}>*/}
-            {/*      {petalWidths}*/}
-            {/*    </Form.Control>*/}
-            {/*  </Form.Group>*/}
-            {/*</Form.Row>*/}
             <Row>
               <Col>
                 <Button
@@ -142,7 +110,7 @@ class App extends Component {
                   variant="success"
                   disabled={isLoading}
                   onClick={!isLoading ? this.handlePredictClick : null}>
-                  { isLoading ? 'Making prediction' : 'Predict' }
+                  { isLoading ? 'Forecasting' : 'Forecast' }
                 </Button>
               </Col>
               <Col>
@@ -151,7 +119,7 @@ class App extends Component {
                   variant="danger"
                   disabled={isLoading}
                   onClick={this.handleCancelClick}>
-                  Reset prediction
+                  Reset
                 </Button>
               </Col>
             </Row>
