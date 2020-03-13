@@ -1,4 +1,4 @@
-# ML-React-App
+# camel-app
 It's a template on which we can build a React app and call endpoints to make predictions.
 
 ### Usage
@@ -6,10 +6,11 @@ The complete guide to use this repository: https://towardsdatascience.com/create
 
 
 ### To install Node.js on RHEL7
+````bash
+$ sudo yum remove -y nodejs npm
+$ curl -sL https://rpm.nodesource.com/setup_13.x | sudo -E bash -
+$ sudo yum install nodejs
+````
 
-    $ sudo yum remove -y nodejs npm
-    $ curl -sL https://rpm.nodesource.com/setup_13.x | sudo -E bash -
-    $ sudo yum install nodejs
-
-Ref: https://tecadmin.net/install-latest-nodejs-and-npm-on-centos/
+[how to install nodejis on RHEL7](https://tecadmin.net/install-latest-nodejs-and-npm-on-centos/)
  
